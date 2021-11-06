@@ -1,0 +1,39 @@
+<app-navigation-user></app-navigation-user>
+<div class="m-3">
+<router-outlet></router-outlet>
+</div>
+
+<div class="card text-center">
+    <div class="card-header">
+        <h1>Inventario</h1>
+    </div>
+    <div class="card-body">
+        <button type="button" class="btn btn-success mb-2" (click)="createItem()"><i class="fas fa-plus"></i>
+            Nuevo Articulo </button>
+            <table class="table table-striped mainTable">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nombre del Producto</th>
+                        <th scope="col">Codigo</th>
+                        <th scope="col">Color</th>
+                        <th scope="col">Cantidad</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let inventory of inventories">
+                        <th scope="row" class="counter"></th>
+                        <td>{{inventory.product.name}}</td>
+                        <td>{{inventory.product.code}}</td>
+                        <td>{{inventory.color}}</td>
+                        <td>{{inventory.quantity}}</td>
+                        <td>
+                            <button type="button" class="btn btn-info" (click)="editItem(inventory.id)"><i class="fas fa-pencil-alt"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+  </div>
+

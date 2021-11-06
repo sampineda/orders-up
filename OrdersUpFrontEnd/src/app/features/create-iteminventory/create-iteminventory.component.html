@@ -1,0 +1,45 @@
+<app-navigation-user></app-navigation-user>
+<div class="m-3">
+<router-outlet></router-outlet>
+</div>
+
+<div class="container-fluid" style="padding-left: 25%;">
+  <div class="col-lg-6" style="width: 70%;">
+      <div class="card text-center">
+          <div class="card-header">
+              <h1>Ingresar Articulo a Inventario</h1>
+          </div>
+          <div class="card-body">
+            <form>
+              <div class="row" style="padding-left: 20%;">
+                <div class="col-6">
+                  <div class="form-group">
+                      <label for="productControlSelect">Seleccione el Producto </label>
+                      <select class="form-select" name="productName" id="productControlSelect" [(ngModel)]="item.productId">
+                          <option *ngFor= "let product of products" [value]="product.id">{{product.name}}</option>
+                      </select>
+                  </div>
+                </div>
+                <div class="col-4" style="padding-top: 3%;">
+                      <button type="submit" class="btn btn-info"  (click)="createProduct()">Nuevo Producto</button>
+                </div>
+              </div>
+              <div class="form-group" style="padding-top: 2%;">
+                  <label for="colorProduct">Color del Producto</label>
+                  <input name="color" type="text" class="form-control" id="colorProduct"
+                  placeholder="Ingrese el color del Producto" [(ngModel)]="item.color">
+              </div>
+              <div class="form-group" style="padding-top: 2%;">
+                  <label for="quantityProduct">Cantidad de Producto</label>
+                  <input name="quantity" type="number" min="0" class="form-control" id="quantityProduct"
+                  placeholder="Ingrese la cantidad de Producto" [(ngModel)]="item.quantity">
+              </div>
+              <div style="margin-top: 2%;">
+                <button type="submit" style="margin-right: 1%;" class="btn btn-success" (click)="createItem()">Guardar</button>
+                <button type="submit" class="btn btn-danger" (click)="cancel()">Cancelar</button>    
+              </div>
+      </form>
+          </div>
+        </div>
+  </div>
+</div>

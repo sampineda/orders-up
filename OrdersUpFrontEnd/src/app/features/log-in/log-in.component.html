@@ -1,0 +1,40 @@
+<app-navigation></app-navigation>
+<div class="m-3">
+<router-outlet></router-outlet>
+</div>
+
+<div class="container-fluid shadow-lg p-3 mb-5 bg-body rounded text-center" style="width: 30%; background-color: white;">
+    <span style="color: rgb(37, 150, 190);">
+        <i class="fas fa-user-circle fa-5x"></i>
+      </span>
+        <h3 style="font-size: 20px;font-family: 'Lato', sans-serif; font-weight: 900; margin-top: 4%; margin-bottom: 10%;">Acceso de Usuario</h3>
+    <form #loginForm= 'ngForm' autocomplete="off">
+        <div style="width: 80%;margin-right:auto; margin-left:auto; margin-top: 5%;">
+            <div class="form-group">
+                <div class="mb-3">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" style="font-size: 1.5em" ><i class="fas fa-user"></i></span>
+                                </div>
+                                <input ng-model="username" placeholder="Usuario" type="text" class="form-control" id="InputUser" name="userName" [(ngModel)]="user.userName" required>
+                            </div>
+                  </div>
+            </div>
+            <div class="form-group">
+                <div class="mb-3">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" style="font-size: 1.5em" ><i class="fas fa-lock"></i></span>
+                                </div>
+                                <input ng-model="password" placeholder="Contraseña" [type]="password" class="form-control" id="InputPassword" name="password" [(ngModel)]="user.password" required>
+                                <button class="btn btn" (click)="showPassword()" style="margin-left: -45px">
+                                    <i class="fa fa-eye" aria-hidden="true" *ngIf="!show"></i>
+                                    <i class="fa fa-eye-slash" aria-hidden="true" *ngIf="show"></i>
+                                  </button>
+                            </div>
+                  </div>
+            </div>
+              <button type="submit" (click)="onSubmit()" ng-model="username.length == 0 || password.length == 0" class="btn btn-dark" style="margin-top: 10%; background-color: rgb(37, 150, 190); border: rgb(37, 150, 190);">Iniciar Sesion</button>
+        </div>
+      </form>
+</div>

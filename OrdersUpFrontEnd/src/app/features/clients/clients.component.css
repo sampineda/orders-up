@@ -1,0 +1,8 @@
+.mainTable{
+    counter-reset: section;
+}
+
+.counter::before {
+    counter-increment: section;
+    content: counter(section);
+}

@@ -1,0 +1,61 @@
+<app-navigation-user></app-navigation-user>
+<div class="m-3">
+<router-outlet></router-outlet>
+</div>
+
+<div class="card" style="width: 70%; margin-left: 15%;">
+    <div class="card-body">
+      <h1 class="card-title text-center">{{business.name}}</h1>
+    </div>
+  </div>
+  <div class="card" style="width: 70%; margin-left: 15%; margin-top: 2%;">
+    <div class="card-body">
+      <h4 class="card-title">Maquinas</h4>
+      <button type="button" class="btn btn-success mb-2" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-plus"></i>
+        Nueva Maquina </button>
+        
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group" style="padding-top: 2%;">
+                            <label for="headsQuantity">Cantidad de Cabezas</label>
+                            <input name="heads" type="number" min="0" class="form-control" id="headsQuantity"
+                            placeholder="Ingrese la cantidad de cabezas de la maquina" [(ngModel)]="machine.heads">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                  <button type="button" class="btn btn-success" (click)="createMachine()" >Guardar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+      <div class="container-fluid text-center" style="width: 70%;">
+        <table class="table table-striped mainTable">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Cantidad de Cabezas </th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let machine of machines">
+                    <th scope="row"  class="counter"></th>
+                    <th scope="row">{{machine.heads}}</th>
+                    <td>
+                        <button type="button" class="btn btn-danger" (click)="deleteMachine(machine.id)" ><i class="fas fa-trash-alt"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

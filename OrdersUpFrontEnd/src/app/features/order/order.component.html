@@ -1,0 +1,48 @@
+<app-navigation-user></app-navigation-user>
+<div class="m-3">
+<router-outlet></router-outlet>
+</div>
+
+  <div class="card text-center">
+    <div class="card-header">
+        <h1>Información de Ordenes</h1>
+    </div>
+    <div class="card-body">
+        <!--<div class="form-group row">
+            <label for="search" class="col-grid col-form-label font-n" style="width: 10%;">Buscar</label>
+            <div style="width: 20%; margin-bottom: 3%; padding-left: initial;" >
+            <input type="text" class="form-control ml-2 font-n" id="search"
+            placeholder="Buscar cliente" [(ngModel)]="searchText" (input)="search($any($event).target.value)">
+            </div>
+        </div>-->
+        <table class="table table-striped mainTable" data-group-by="true" >
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre de Cliente</th>
+                    <th scope="col">Telefono</th>
+                    <th scope="col">Correo</th>
+                    <th scope="col">Fecha de Entrega</th>
+                    <th scope="col">Status</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let order of orders" ng-repeat="order in orders'">
+                    <th scope="row" class="counter"></th>
+                    <td >{{order.client.name}}</td>
+                    <td>{{order.client.phoneNumber}}</td>
+                    <td>{{order.client.email}}</td>
+                    <td>{{order.dueDate | date: 'dd-MMMM-yyyy'}}</td>
+                    <td>
+                        <i class="fa" [ngClass]="{'fa-times-circle':!order.done, 'fa-check-circle':order.done}" style="font-size: 25px;"> </i>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-info" data-bs-toggle="tooltip" data-bs-placement="top" title="Ver detalle" (click)="getDetailsByOrder(order.client.id, order.id)"><i class="fas fa-eye"></i></button>
+                        <button type="button" class="btn btn-danger" (click)="deleteOrder(order.client.id, order.id)" style="margin-left: 3%;"><i class="fas fa-trash-alt"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+  </div>

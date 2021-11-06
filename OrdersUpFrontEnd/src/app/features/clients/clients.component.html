@@ -1,0 +1,38 @@
+<app-navigation-user></app-navigation-user>
+<div class="m-3">
+<router-outlet></router-outlet>
+</div>
+
+<div class="card text-center">
+    <div class="card-header">
+        <h1>Clientes</h1>
+    </div>
+    <div class="card-body">
+        <button type="button" class="btn btn-success mb-2" (click)="createClient()" ><i class="fas fa-plus"></i>
+            Nuevo Cliente </button>
+            <table class="table table-striped mainTable">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nombre del Cliente</th>
+                        <th scope="col">Numero de Telefono</th>
+                        <th scope="col">Correo Electronico</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let client of clients">
+                        <th scope="row" class="counter"></th>
+                        <td>{{client.name}}</td>
+                        <td>{{client.phoneNumber}}</td>
+                        <td>{{client.email}}</td>
+                        <td>
+                            <button type="button" class="btn btn-info" (click)="editClient(client.id)"><i class="fas fa-pencil-alt"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+  </div>
+
+

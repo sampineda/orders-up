@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@600&display=swap');
+
+.back{
+    background-image: url("src/assets/images/receipt.png");
+    background-size: cover;
+    width: 100%;
+    height: auto;
+}
+
+.sty{
+    padding-top: 7%;
+    font-family: 'Zilla Slab', serif;
+}
+
+.mainTable{
+    counter-reset: section;
+}
+
+.counter::before {
+    counter-increment: section;
+    content: counter(section);
+}

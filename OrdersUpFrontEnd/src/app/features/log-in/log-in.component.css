@@ -1,0 +1,12 @@
+form{
+    margin: 0px 16px;
+}
+
+div.form-group input.invalid{
+    border: 1px solid #dc3545;
+}
+
+div.form-group label:first-child{
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}

@@ -1,0 +1,117 @@
+<app-navigation-user></app-navigation-user>
+<div class="m-3">
+<router-outlet></router-outlet>
+</div>
+<div class="container-fluid">
+    <div class="row">
+            <div class="col-lg-6" style="width: 100%;">
+            <div class="card text-center">
+                <div class="card-header">
+                    <h1>Nueva Orden</h1>
+                </div>
+                    <div class="card-body text-center">
+                        <div class="container text-center" style="padding-left: 10%;">
+                            <div class="row g-3 align-items-center">
+                                <div class="col-auto">
+                                    <label for="clientControlSelect">Seleccione el Cliente</label>
+                                </div>
+                                <div class="col-auto" style="width: 30%;">
+                                    <select class="form-control" name="clientName" (change)="onChange($event)" id="clientControlSelect" [disabled]="butDisabled" ngDefaultControl [(ngModel)]="order.clientId">
+                                        <option *ngFor= "let client of clients" [value]="client.id" >{{client.name}}</option>
+                                    </select>
+                                </div>
+                                <div class="col-auto" style="width: 30%;">
+                                    <button type="submit" class="btn btn-success" id="btnCreateOrder" name="btnCreateOrder" (click)="createOrder();toggle();actionMethod($event)">Comenzar Orden</button>
+                                </div>
+                          </div>
+                        </div>
+                        <form name="myForm" ng-submit="onSubmit()" id="myForm">
+                            <ng-container *ngIf="show">
+                                    <div class="row g-3 align-items-center" style="padding-top: 4%;padding-left: 1%;" >
+                                        <div class="col-auto">
+                                            <label for="clientControlSelect">Producto</label>
+                                        </div>
+                                            <div class="col-auto" style="width: 30%;">
+                                                <select (change)="selectChangeHandler($event)" class="form-control" name="productName" id="productControlSelect" ngDefaultControl [(ngModel)]="selectedOption">
+                                                    <option *ngFor= "let product of products" [value]="product.id" required>{{product.name}}</option>
+                                                </select>
+                                            </div>
+                                        <div class="col-auto">
+                                            <label for="clientControlSelect">Color</label>
+                                        </div>
+                                            <div class="col-auto" style="width: 30%;">
+                                                <select class="form-control" name="productName" id="colorControlSelect" ngDefaultControl [(ngModel)]="detail.inventoryId">
+                                                    <option *ngFor= "let item of itemsColor" [value]="item.id" required>{{item.color}}</option>
+                                                </select>
+                                            </div>
+                                      </div>
+                                  <div class="row g-3 align-items-center" style="padding-top: 4%; padding-left: 1%;">
+                                    <div class="col-auto">
+                                        <label for="clientControlSelect">Cantidad</label>
+                                    </div>
+                                        <div class="col-auto" style="width: 30%;">
+                                            <input name="quantity" type="number" min="0" class="form-control" id="quantityProduct"
+                                            placeholder="Cantidad de Producto" ngDefaultControl [(ngModel)]="detail.quantity" required>
+                                        </div>
+                                    <div class="col-auto">
+                                        <label for="clientControlSelect">Logo</label>
+                                      </div>
+                                        <div class="col-auto" style="width: 30%;">
+                                            <select class="form-control" name="logoName" id="logoControlSelect" ngDefaultControl [(ngModel)]="detail.logoId">
+                                                <option *ngFor= "let logo of logos" [value]="logo.id" required>{{logo.name}}</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-auto">
+                                        </div>
+                                  </div>
+                                  <div class="row g-3 align-items-center" style="padding-top: 4%;padding-left: 1%;">
+                                    <div class="col-auto">
+                                        <label for="clientControlSelect">Precio</label>
+                                    </div>
+                                        <div class="col-auto" >
+                                            <div class="input-group">
+                                                <div class="input-group-prepend" style="padding-left: 8%;">
+                                                    <span class="input-group-text" >L.</span>
+                                                        </div>
+                                                        <input type="number" class="form-control" ngDefaultControl [(ngModel)]="detail.price" name="price" placeholder="0.00" required/>
+                                                    </div>
+                                              </div>         
+                                  </div>
+                                  <div class="row g-3 align-items-center" style="padding-top: 4%;padding-left: 35%;">
+                                          <div class="col-auto" style="padding-left: 5%;">
+                                            <button type="submit" class="btn btn-warning" style="margin-top: 1%;" (click)="createList();">Agregar Producto</button>
+                                        </div>             
+                                  </div>
+                                <form>
+                                    <table class="table table-striped mainTable">
+                                      <thead>
+                                          <tr>
+                                              <th scope="col">#</th>
+                                              <th scope="col">Producto</th>
+                                              <th scope="col">Color</th>
+                                              <th scope="col">Cantidad</th>
+                                              <th scope="col">Precio</th>
+                                              <th scope="col">Logo</th>
+                                          </tr>
+                                      </thead>
+                                      <tbody>
+                                          <tr *ngFor="let detail of details">
+                                              <th scope="row" class="counter"></th>
+                                              <td>{{detail.inventory.product.name}}</td>
+                                              <td>{{detail.inventory.color}}</td>
+                                              <td>{{detail.quantity}}</td>
+                                              <td>L. {{detail.price}}</td>
+                                              <td>{{detail.logo.name}}</td>
+                                          </tr>
+                                      </tbody>
+                                  </table>
+                                  <button type="submit" id="cancelbtn" class="btn btn-success" (click)="calculateDate();actionMethod($event)">Crear Orden</button>
+                                  <button type="submit" id="cancelbtn" class="btn btn-danger" style="margin-left: 2%;" (click)="cancelOrder()">Cancelar</button>
+                              </form>
+                            </ng-container>
+                        </form>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
